@@ -1,0 +1,109 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    double real;
+    double imag;
+
+public:
+    // Default constructor
+    Complex() {
+        real = 0;
+        imag = 0;
+    }
+
+    // Function to accept complex number
+    void accept() {
+        cout << "Enter real and imaginary parts: ";
+        cin >> real >> imag;
+    }
+
+    // Function to display complex number
+    void display() const {
+        if (imag >= 0)
+            cout << real << " + j" << imag << endl;
+        else
+            cout << real << " - j" << -imag << endl;
+    }
+
+    // Overload + operator
+    Complex operator+(const Complex &c) const {
+        Complex result;
+
+        result.real = real + c.real;
+        result.imag = imag + c.imag;
+
+        return result;
+    }
+
+    // Overload - operator
+    Complex operator-(const Complex &c) const {
+        Complex result;
+
+        result.real = real - c.real;
+        result.imag = imag - c.imag;
+
+        return result;
+    }
+
+    // Overload * operator
+    Complex operator*(const Complex &c) const {
+        Complex result;
+
+        result.real = (real * c.real) - (imag * c.imag);
+        result.imag = (real * c.imag) + (imag * c.real);
+
+        return result;
+    }
+
+    // Overload / operator
+    Complex operator/(const Complex &c) const {
+        Complex result;
+
+        double denominator = (c.real * c.real) +
+                             (c.imag * c.imag);
+
+        if (denominator == 0) {
+            cout << "Division by zero is not possible." << endl;
+            return result;
+        }
+
+        result.real = ((real * c.real) +
+                       (imag * c.imag)) / denominator;
+
+        result.imag = ((imag * c.real) -
+                       (real * c.imag)) / denominator;
+
+        return result;
+    }
+};
+
+int main() {
+    Complex c1, c2;
+    Complex result;
+
+    cout << "Enter first complex number" << endl;
+    c1.accept();
+
+    cout << "Enter second complex number" << endl;
+    c2.accept();
+
+    result = c1 + c2;
+    cout << "c1 + c2 = ";
+    result.display();
+
+    result = c1 - c2;
+    cout << "c1 - c2 = ";
+    result.display();
+
+    result = c1 * c2;
+    cout << "c1 * c2 = ";
+    result.display();
+
+    result = c1 / c2;
+    cout << "c1 / c2 = ";
+    result.display();
+
+    return 0;
+}
