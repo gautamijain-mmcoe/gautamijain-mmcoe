@@ -1,0 +1,68 @@
+#include <iostream>              // For input and output
+#include <string>                // For string
+using namespace std;             // Use standard functions
+
+class Employee                  // First base class
+{
+protected:
+    int id;                     // Employee ID
+    string name;                // Employee name
+
+public:
+    void getEmployee()          // Accept employee details
+    {
+        cout << "Enter Employee ID: ";
+        cin >> id;
+
+        cout << "Enter Employee Name: ";
+        cin >> name;
+    }
+};
+
+class Salary                    // Second base class
+{
+protected:
+    float basic, da, hra;       // Salary and allowances
+
+public:
+    void getSalary()             // Accept salary details
+    {
+        cout << "Enter Basic Salary: ";
+        cin >> basic;
+
+        cout << "Enter DA: ";
+        cin >> da;
+
+        cout << "Enter HRA: ";
+        cin >> hra;
+    }
+};
+
+class EmployeeSalary : public Employee, public Salary
+{
+public:
+    void display()               // Display salary details
+    {
+        float gross;             // Variable for gross salary
+
+        gross = basic + da + hra; // Calculate gross salary
+
+        cout << "\nEmployee ID: " << id << endl;
+        cout << "Employee Name: " << name << endl;
+        cout << "Basic Salary: " << basic << endl;
+        cout << "DA: " << da << endl;
+        cout << "HRA: " << hra << endl;
+        cout << "Gross Salary: " << gross << endl;
+    }
+};
+
+int main()
+{
+    EmployeeSalary e;            // Create object
+
+    e.getEmployee();             // Accept employee details
+    e.getSalary();               // Accept salary details
+    e.display();                 // Display result
+
+    return 0;                    // End program
+}
