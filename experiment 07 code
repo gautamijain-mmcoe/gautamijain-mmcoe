@@ -1,0 +1,63 @@
+#include <iostream>              // For cin and cout
+#include <cstring>               // For strlen() and strcpy()
+using namespace std;             // Use standard functions directly
+
+class String                      // Create String class
+{
+private:
+    char *str;                    // Pointer to store string
+
+public:
+
+    String()                      // Default constructor
+    {
+        str = new char[1];        // Allocate memory for empty string
+        str[0] = '\0';            // Store null character
+    }
+
+    String(const char *s)         // Parameterized constructor
+    {
+        str = new char[strlen(s) + 1]; // Allocate required memory
+        strcpy(str, s);           // Copy string into str
+    }
+
+    void Accept()                 // Function to accept string
+    {
+        char temp[100];           // Temporary string storage
+        cout << "Enter string: "; // Ask user for string
+        cin.getline(temp, 100);   // Read string including spaces
+
+        delete[] str;             // Delete old memory
+        str = new char[strlen(temp) + 1]; // Allocate new memory
+        strcpy(str, temp);        // Copy input into str
+    }
+
+    void Display()                // Function to display string
+    {
+        cout << str;              // Print the string
+    }
+
+    ~String()                     // Destructor
+    {
+        delete[] str;             // Free allocated memory
+    }
+};
+
+int main()                        // Program starts here
+{
+    String s1;                    // Create object using default constructor
+
+    s1.Accept();                  // Accept string from user
+
+    cout << "String 1: ";         // Display message
+    s1.Display();                 // Display first string
+
+    cout << endl;                 // Move to next line
+
+    String s2("Hello C++");       // Create object using parameterized constructor
+
+    cout << "String 2: ";         // Display message
+    s2.Display();                 // Display second string
+
+    return 0;                     // End program
+}
