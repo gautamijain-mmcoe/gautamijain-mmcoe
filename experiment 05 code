@@ -1,0 +1,45 @@
+#include <iostream>              // Includes input and output functions
+using namespace std;             // Allows us to use cout and cin directly
+
+class Area                         // Defines a class named Area
+{
+public:                           // Makes the following functions accessible
+
+    // Function to calculate area of a square
+    int area(int side)
+    {
+        return side * side;       // Returns side × side
+    }
+
+    // Function to calculate area of a rectangle
+    int area(int length, int breadth)
+    {
+        return length * breadth;  // Returns length × breadth
+    }
+};
+
+int main()                        // Main function where program execution starts
+{
+    Area obj;                     // Creates an object named obj of class Area
+
+    int side;                     // Declares variable to store square side
+    int length;                   // Declares variable to store rectangle length
+    int breadth;                  // Declares variable to store rectangle breadth
+
+    cout << "Enter side of square: "; // Displays message to enter square side
+    cin >> side;                  // Takes side value from the user
+
+    cout << "Area of square = ";  // Displays the result message
+    cout << obj.area(side) << endl; // Calls area(int) and displays square area
+
+    cout << "Enter length of rectangle: "; // Asks for rectangle length
+    cin >> length;                // Takes length from the user
+
+    cout << "Enter breadth of rectangle: "; // Asks for rectangle breadth
+    cin >> breadth;               // Takes breadth from the user
+
+    cout << "Area of rectangle = "; // Displays the result message
+    cout << obj.area(length, breadth) << endl; // Calls area(int,int)
+
+    return 0;                     // Ends the program successfully
+}
