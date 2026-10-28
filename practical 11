@@ -1,0 +1,45 @@
+#include <iostream>              // For input and output
+#include <string>                // For string data type
+using namespace std;              // Use cout directly
+
+// Function template to find maximum value
+template <class T>                // T represents any suitable data type
+T maximumValue(T a, T b)           // Accepts two values of type T
+{
+    return (a > b) ? a : b;       // Returns the larger value
+}
+
+// Class template
+template <class T>                // T represents the data type
+class Box                          // Define Box class
+{
+    T value;                       // Stores a value of type T
+
+public:
+    Box(T v)                      // Parameterized constructor
+    {
+        value = v;                // Initialize value
+    }
+
+    void display()                 // Function to display value
+    {
+        cout << "Box value = " << value << endl; // Print value
+    }
+};
+
+int main()                         // Main function
+{
+    cout << "Maximum integer = "
+         << maximumValue(10, 25) << endl; // Call template with integers
+
+    cout << "Maximum double = "
+         << maximumValue(3.5, 5.5) << endl; // Call template with doubles
+
+    Box<int> b1(100);              // Create Box object for integer
+    b1.display();                  // Display integer value
+
+    Box<string> b2("C++ Templates"); // Create Box object for string
+    b2.display();                  // Display string value
+
+    return 0;                      // End program
+}
