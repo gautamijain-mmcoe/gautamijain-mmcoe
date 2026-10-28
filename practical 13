@@ -1,0 +1,39 @@
+#include <iostream>  // For input and output
+#include <fstream>   // For file handling
+using namespace std;
+
+int main()
+{
+    string source, destination;  // Store file names
+
+    cout << "Enter source file name: ";
+    cin >> source;  // Read source file name
+
+    cout << "Enter destination file name: ";
+    cin >> destination;  // Read destination file name
+
+    ifstream fin(source);  // Open source file for reading
+
+    if (!fin)  // Check whether source file opened
+    {
+        cout << "Error opening source file.";
+        return 1;
+    }
+
+    ofstream fout(destination);  // Open destination for writing
+
+    if (!fout)  // Check whether destination file opened
+    {
+        cout << "Error opening destination file.";
+        return 1;
+    }
+
+    fout << fin.rdbuf();  // Copy contents to destination
+
+    fin.close();  // Close source file
+    fout.close();  // Close destination file
+
+    cout << "File copied successfully.";
+
+    return 0;
+}
