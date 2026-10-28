@@ -1,0 +1,33 @@
+#include <iostream>              // For input and output
+#include <stdexcept>              // For runtime_error
+using namespace std;              // Use cin and cout directly
+
+int main()                        // Main function
+{
+    float numerator, denominator; // Declare two variables
+
+    cout << "Enter numerator: ";  // Ask for numerator
+    cin >> numerator;             // Read numerator
+
+    cout << "Enter denominator: "; // Ask for denominator
+    cin >> denominator;           // Read denominator
+
+    try                           // Start try block
+    {
+        if (denominator == 0)     // Check division by zero
+        {
+            throw runtime_error("Division by zero is not allowed.");
+            // Throw an exception if denominator is zero
+        }
+
+        cout << "Result = " << numerator / denominator << endl;
+        // Divide and display the result
+    }
+    catch (const runtime_error &e) // Catch the exception
+    {
+        cout << "Exception caught: " << e.what() << endl;
+        // Display the error message
+    }
+
+    return 0;                     // End program
+}
