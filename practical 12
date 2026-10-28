@@ -1,0 +1,29 @@
+#include <iostream>                 // For input and output
+using namespace std;                // Use cout directly
+
+namespace Arithmetic               // First namespace
+{
+    void show()                     // Function named show
+    {
+        cout << "Arithmetic namespace: 10 + 20 = "
+             << 10 + 20 << endl;    // Display addition
+    }
+}
+
+namespace Geometry                 // Second namespace
+{
+    void show()                     // Same function name
+    {
+        cout << "Geometry namespace: rectangle area = "
+             << 6 * 4 << endl;      // Display rectangle area
+    }
+}
+
+int main()                          // Main function
+{
+    Arithmetic::show();             // Call show from Arithmetic
+
+    Geometry::show();               // Call show from Geometry
+
+    return 0;                       // End program
+}
